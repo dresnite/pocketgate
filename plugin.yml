@@ -1,0 +1,10 @@
+name: PocketGate
+author: dresnite
+api: 5.0.0
+version: 1.0.0
+main: PocketGate\PocketGate
+
+permissions:
+  pocketgate.command:
+    description: Allows players open the PocketGate interface
+    default: op
