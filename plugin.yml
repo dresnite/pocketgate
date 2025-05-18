@@ -3,6 +3,7 @@ author: dresnite
 api: 5.0.0
 version: 1.0.0
 main: PocketGate\PocketGate
+description: Seamlessly convert your PocketMine-MP worlds into Hytopia’s format, all from within the game.
 
 permissions:
   pocketgate.command:
