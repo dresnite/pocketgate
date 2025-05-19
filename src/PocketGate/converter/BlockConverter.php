@@ -12,14 +12,14 @@ use pocketmine\world\World;
 
 class BlockConverter {
 
-    private ?Session $session = null;
+    private Session $session;
 
     private ?World $world = null;
 
     private ?Vector3 $firstPos = null;
     private ?Vector3 $secondPos = null;
 
-    public function setSession(?Session $session): void {
+    public function __construct(Session $session) {
         $this->session = $session;
     }
 
@@ -36,10 +36,6 @@ class BlockConverter {
     }
 
     public function attemptToConvert(): bool {
-        if ($this->session === null) {
-            return false;
-        }
-
         $player = $this->session->getPlayer();
 
         if ($this->firstPos === null) {
