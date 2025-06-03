@@ -5,6 +5,8 @@ namespace PocketGate;
 use PocketGate\block\blockConfig\BlockConfigManager;
 use PocketGate\block\blockMap\BlockMapManager;
 use PocketGate\command\PocketGateCommand;
+use PocketGate\command\Pos1Command;
+use PocketGate\command\Pos2Command;
 use PocketGate\listener\SessionListener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
@@ -57,7 +59,12 @@ class PocketGate extends PluginBase {
     }
 
     private function registerCommands(): void {
-        $this->getServer()->getCommandMap()->register("pocketgate", new PocketGateCommand());
+        $commandMap = $this->getServer()->getCommandMap();
+        $fallbackPrefix = "pocketgate";
+
+        $commandMap->register($fallbackPrefix, new PocketGateCommand());
+        $commandMap->register($fallbackPrefix, new Pos1Command());
+        $commandMap->register($fallbackPrefix, new Pos2Command());
     }
 
     private function registerListeners(): void {
