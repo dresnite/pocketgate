@@ -14,6 +14,7 @@ class BlockConfigManager {
     private const BLOCK_NAME = "blockName";
     private const TEXTURE_URI = "textureUri";
     private const IS_MULTI_TEXTURE = "isMultiTexture";
+    private const IS_CUSTOM = "isCustom";
 
     /**
      * @return BlockConfig[]
@@ -37,7 +38,8 @@ class BlockConfigManager {
             $this->addBlockConfig(new BlockConfig(
                 $blockUnparsed[self::BLOCK_NAME],
                 $blockUnparsed[self::TEXTURE_URI],
-                $blockUnparsed[self::IS_MULTI_TEXTURE] ?? false
+                $blockUnparsed[self::IS_MULTI_TEXTURE] ?? false,
+                $blockUnparsed[self::IS_CUSTOM] ?? false
             ));
         }
 
@@ -53,7 +55,8 @@ class BlockConfigManager {
             $data[] = [
                 self::BLOCK_NAME => $blockConfig->getBlockName(),
                 self::TEXTURE_URI => $blockConfig->getTextureUri(),
-                self::IS_MULTI_TEXTURE => $blockConfig->isMultiTexture()
+                self::IS_MULTI_TEXTURE => $blockConfig->isMultiTexture(),
+                self::IS_CUSTOM => $blockConfig->isCustom()
             ];
         }
 
