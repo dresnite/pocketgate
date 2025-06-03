@@ -90,6 +90,7 @@ class BlockConverter {
                 "id" => $uniqueId,
                 "name" => $blockConfig->getBlockName(),
                 "textureUri" => $blockConfig->getTextureUri(),
+                "isMultiTexture" => $blockConfig->isMultiTexture(),
             ];
 
             $hytopiaBlockNameToUniqueIdMap[$blockConfig->getBlockName()] = $uniqueId;

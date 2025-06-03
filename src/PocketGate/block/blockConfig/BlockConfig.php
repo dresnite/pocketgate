@@ -7,11 +7,13 @@ class BlockConfig {
     private string $uniqueId;
     private string $blockName;
     private string $textureUri;
+    private bool $isMultiTexture;
 
-    public function __construct(string $blockName, string $textureUri) {
+    public function __construct(string $blockName, string $textureUri, bool $isMultiTexture) {
         $this->uniqueId = uniqid();
         $this->blockName = $blockName;
         $this->textureUri = $textureUri;
+        $this->isMultiTexture = $isMultiTexture;
     }
 
     public function getUniqueId(): string {
@@ -24,6 +26,10 @@ class BlockConfig {
 
     public function getTextureUri(): string {
         return $this->textureUri;
+    }
+
+    public function isMultiTexture(): bool {
+        return $this->isMultiTexture;
     }
 
 }

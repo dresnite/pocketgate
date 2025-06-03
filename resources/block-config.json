@@ -17,7 +17,8 @@
   },
   {
     "blockName": "oak-log",
-    "textureUri": "blocks/log/-x.png"
+    "textureUri": "blocks/log",
+    "isMultiTexture": true
   },
   {
     "blockName": "nuit",
@@ -25,7 +26,8 @@
   },
   {
     "blockName": "grass",
-    "textureUri": "blocks/grass/+y.png"
+    "textureUri": "blocks/grass",
+    "isMultiTexture": true
   },
   {
     "blockName": "stone-bricks",

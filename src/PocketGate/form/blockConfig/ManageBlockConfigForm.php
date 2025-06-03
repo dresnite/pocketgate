@@ -18,10 +18,11 @@ class ManageBlockConfigForm extends SimpleForm {
 
         $hytopiaBlockName = $blockConfig->getBlockName();
         $hytopiaTextureUri = $blockConfig->getTextureUri();
+        $isMultiTexture = $blockConfig->isMultiTexture() ? "Yes" : "No";
 
         parent::__construct(
             "Manage Block Configuration",
-            "Hytopia block name:\n$hytopiaBlockName\n\nHytopia block texture uri:\n$hytopiaTextureUri"
+            "Hytopia block name:\n$hytopiaBlockName\n\nHytopia block texture uri:\n$hytopiaTextureUri\n\nMarked as multitexture:\n$isMultiTexture",
         );
     }
 
