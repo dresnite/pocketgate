@@ -2,5 +2,37 @@
   {
     "blockName": "bricks",
     "textureUri": "blocks/bricks.png"
+  },
+  {
+    "blockName": "stone",
+    "textureUri": "blocks/stone.png"
+  },
+  {
+    "blockName": "oak-leaves",
+    "textureUri": "blocks/oak-leaves.png"
+  },
+  {
+    "blockName": "oak-planks",
+    "textureUri": "blocks/oak-planks.png"
+  },
+  {
+    "blockName": "oak-log",
+    "textureUri": "blocks/log/-x.png"
+  },
+  {
+    "blockName": "nuit",
+    "textureUri": "blocks/nuit.png"
+  },
+  {
+    "blockName": "grass",
+    "textureUri": "blocks/grass/+y.png"
+  },
+  {
+    "blockName": "stone-bricks",
+    "textureUri": "blocks/stone-bricks.png"
+  },
+  {
+    "blockName": "void-sand",
+    "textureUri": "blocks/void-sand.png"
   }
 ]

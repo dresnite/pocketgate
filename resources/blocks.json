@@ -2,5 +2,73 @@
   {
     "minecraft_block_name": "stone",
     "hytopia_block_name": "stone"
+  },
+  {
+    "minecraft_block_name": "grass",
+    "hytopia_block_name": "grass"
+  },
+  {
+    "minecraft_block_name": "blue_concrete",
+    "hytopia_block_name": "void-sand"
+  },
+  {
+    "minecraft_block_name": "stone_bricks",
+    "hytopia_block_name": "stone-bricks"
+  },
+  {
+    "minecraft_block_name": "oak_log",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "spruce_log",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "birch_log",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "jungle_log",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "acacia_log",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "dark_oak_log",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "mangrove_log",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "cherry_log",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "pale_oak_log",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "crimsom_stem",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "warped_stem",
+    "hytopia_block_name": "oak-log"
+  },
+  {
+    "minecraft_block_name": "grass_path",
+    "hytopia_block_name": "nuit"
+  },
+  {
+    "minecraft_block_name": "planks",
+    "hytopia_block_name": "oak-planks"
+  },
+  {
+    "minecraft_block_name": "oak_leaves",
+    "hytopia_block_name": "oak-leaves"
   }
 ]
