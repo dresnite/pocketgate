@@ -17,47 +17,47 @@
   },
   {
     "minecraft_block_name": "oak_log",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "spruce_log",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "birch_log",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "jungle_log",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "acacia_log",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "dark_oak_log",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "mangrove_log",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "cherry_log",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "pale_oak_log",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "crimsom_stem",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "warped_stem",
-    "hytopia_block_name": "oak-log"
+    "hytopia_block_name": "log"
   },
   {
     "minecraft_block_name": "grass_path",

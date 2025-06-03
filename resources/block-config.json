@@ -16,8 +16,9 @@
     "textureUri": "blocks/oak-planks.png"
   },
   {
-    "blockName": "oak-log",
+    "blockName": "log",
     "textureUri": "blocks/log",
+    "isCustom": false,
     "isMultiTexture": true
   },
   {
