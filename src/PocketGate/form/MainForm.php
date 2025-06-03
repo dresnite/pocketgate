@@ -38,15 +38,7 @@ class MainForm extends SimpleForm {
 
         $this->addButton(new Button("Convert selection to Hytopia's format", null, function(Player $player): void {
             $session = SessionFactory::getSessionOrThrow($player);
-            $converter = new BlockConverter($session);
-
-            $converter->setFirstPos($session->getFirstPosition());
-            $converter->setSecondPos($session->getSecondPosition());
-            $converter->setWorld($session->getFirstPosition()?->getWorld());
-
-            if(!$converter->attemptToConvert()) {
-                $player->sendMessage(TextFormat::RED . "Couldn't convert the world");
-            }
+            BlockConverter::convertFor($session);
         }));
     }
 

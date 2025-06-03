@@ -35,5 +35,9 @@ class Session {
     public function setSecondPosition(?Position $secondPosition): void {
         $this->secondPosition = $secondPosition;
     }
+    
+    public function sendMessage(string $message): void {
+        $this->player->sendMessage($message);
+    }
 
 }

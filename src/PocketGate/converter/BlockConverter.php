@@ -19,6 +19,18 @@ class BlockConverter {
     private ?Vector3 $firstPos = null;
     private ?Vector3 $secondPos = null;
 
+    static public function convertFor(Session $session): void {
+        $converter = new BlockConverter($session);
+
+        $converter->setFirstPos($session->getFirstPosition());
+        $converter->setSecondPos($session->getSecondPosition());
+        $converter->setWorld($session->getFirstPosition()?->getWorld());
+
+        if(!$converter->attemptToConvert()) {
+            $session->sendMessage(TextFormat::RED . "Couldn't convert the world");
+        }
+    }
+
     public function __construct(Session $session) {
         $this->session = $session;
     }

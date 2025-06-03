@@ -4,6 +4,7 @@ namespace PocketGate;
 
 use PocketGate\block\blockConfig\BlockConfigManager;
 use PocketGate\block\blockMap\BlockMapManager;
+use PocketGate\command\ConvertCommand;
 use PocketGate\command\PocketGateCommand;
 use PocketGate\command\Pos1Command;
 use PocketGate\command\Pos2Command;
@@ -65,6 +66,7 @@ class PocketGate extends PluginBase {
         $commandMap->register($fallbackPrefix, new PocketGateCommand());
         $commandMap->register($fallbackPrefix, new Pos1Command());
         $commandMap->register($fallbackPrefix, new Pos2Command());
+        $commandMap->register($fallbackPrefix, new ConvertCommand());
     }
 
     private function registerListeners(): void {

@@ -11,7 +11,8 @@ use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use pocketmine\world\Position;
 
-abstract class PosCommand extends Command {
+abstract class SessionCommand extends Command {
+
     public function execute(CommandSender $sender, string $commandLabel, array $args): void {
         if (!$sender instanceof Player) {
             $sender->sendMessage(TextFormat::RED . "Please run this command in-game.");
@@ -25,10 +26,9 @@ abstract class PosCommand extends Command {
             return;
         }
 
-        $this->handlePositionSet($sender->getPosition(), $session);
-        $sender->sendMessage(TextFormat::GREEN . "Position has been set.");
+        $this->onCommand($sender->getPosition(), $session);
     }
 
-    abstract function handlePositionSet(Position $position, Session $session): void;
+    abstract function onCommand(Position $position, Session $session): void;
 
 }
