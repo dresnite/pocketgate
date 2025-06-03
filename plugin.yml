@@ -9,3 +9,12 @@ permissions:
   pocketgate.command:
     description: Allows players open the PocketGate interface
     default: op
+  pocketgate.command.pg1:
+    description: Sets first player position
+    default: op
+  pocketgate.command.pg2:
+    description: Set second player position
+    default: op
+  pocketgate.command.pgc:
+    description: Starts the conversion process
+    default: op
