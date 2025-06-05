@@ -76,7 +76,7 @@ class BlockConverter {
     }
 
     private function convert(Vector3 $firstPos, Vector3 $secondPos, World $world): int {
-        $timestamp = time(); // get current Unix timestamp
+        $timestamp = time();
         $currentDateAsText = date("Y-m-d H:i:s", $timestamp);
         $tempFile = PocketGate::getInstance()->getHytopiaWorldsFolder() . $currentDateAsText . ".tmp";
         $finalFile = PocketGate::getInstance()->getHytopiaWorldsFolder() . $currentDateAsText . ".json";
@@ -113,43 +113,66 @@ class BlockConverter {
         $maxZ = max($firstPos->getFloorZ(), $secondPos->getFloorZ());
 
         $blocksConverted = 0;
-        $currentChunk = [];
-        $chunkSize = 100;
-
         $blockMapManager = PocketGate::getInstance()->getBlockMapManager();
 
-        for ($x = $minX; $x <= $maxX; $x++) {
-            for ($y = $minY; $y <= $maxY; $y++) {
-                for ($z = $minZ; $z <= $maxZ; $z++) {
-                    $block = $world->getBlockAt($x, $y, $z);
+        // Process in chunks of 16x16 (Minecraft chunk size)
+        $chunkSize = 16;
+        $xChunks = ceil(($maxX - $minX + 1) / $chunkSize);
+        $zChunks = ceil(($maxZ - $minZ + 1) / $chunkSize);
+        
+        // Buffer for collecting blocks before writing to file
+        $currentChunk = [];
+        $maxChunkSize = 50000;
 
-                    if ($block instanceof Air) {
-                        continue;
-                    }
+        // Cache for block mappings to reduce lookups
+        $blockMappingCache = [];
 
-                    $relativeX = $x - $minX;
-                    $relativeY = $y - $minY;
-                    $relativeZ = $z - $minZ;
+        for ($chunkX = 0; $chunkX < $xChunks; $chunkX++) {
+            $startX = $minX + ($chunkX * $chunkSize);
+            $endX = min($startX + $chunkSize - 1, $maxX);
 
-                    $blockAliases = StringToItemParser::getInstance()->lookupBlockAliases($block);
+            for ($chunkZ = 0; $chunkZ < $zChunks; $chunkZ++) {
+                $startZ = $minZ + ($chunkZ * $chunkSize);
+                $endZ = min($startZ + $chunkSize - 1, $maxZ);
 
-                    $found = null;
-                    foreach ($blockAliases as $blockAlias) {
-                        $blockMap = $blockMapManager->getBlockMapByMinecraftBlockName($blockAlias);
+                // Process this chunk
+                for ($x = $startX; $x <= $endX; $x++) {
+                    for ($y = $minY; $y <= $maxY; $y++) {
+                        for ($z = $startZ; $z <= $endZ; $z++) {
+                            $block = $world->getBlockAt($x, $y, $z, false, false);
 
-                        if ($blockMap !== null) {
-                            $found = $blockMap;
-                            break;
+                            if ($block instanceof Air) {
+                                continue;
+                            }
+
+                            $relativeX = $x - $minX;
+                            $relativeY = $y - $minY;
+                            $relativeZ = $z - $minZ;
+
+                            // Use cached block mapping if available
+                            $blockId = $block->getTypeId();
+                            if (!isset($blockMappingCache[$blockId])) {
+                                $blockAliases = StringToItemParser::getInstance()->lookupBlockAliases($block);
+                                $found = null;
+                                foreach ($blockAliases as $blockAlias) {
+                                    $blockMap = $blockMapManager->getBlockMapByMinecraftBlockName($blockAlias);
+                                    if ($blockMap !== null) {
+                                        $found = $blockMap;
+                                        break;
+                                    }
+                                }
+                                $blockMappingCache[$blockId] = $hytopiaBlockNameToUniqueIdMap[$found?->getHytopiaBlockName()] ?? 1;
+                            }
+
+                            $currentChunk["$relativeX,$relativeY,$relativeZ"] = $blockMappingCache[$blockId];
+                            $blocksConverted++;
+
+                            // Write to file if buffer is full
+                            if (count($currentChunk) >= $maxChunkSize) {
+                                $this->appendBlocksToFile($tempFile, $currentChunk);
+                                $currentChunk = [];
+                            }
                         }
-                    }
-
-                    $currentChunk["$relativeX,$relativeY,$relativeZ"] = $hytopiaBlockNameToUniqueIdMap[$found?->getHytopiaBlockName()] ?? 1;
-                    $blocksConverted++;
-
-                    // When we reach chunk size, append to file
-                    if (count($currentChunk) >= $chunkSize) {
-                        $this->appendBlocksToFile($tempFile, $currentChunk);
-                        $currentChunk = [];
                     }
                 }
             }
@@ -176,5 +199,4 @@ class BlockConverter {
         // Write back to file
         file_put_contents($file, json_encode($content));
     }
-
 }
